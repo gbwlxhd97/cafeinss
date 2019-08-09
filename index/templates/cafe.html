@@ -1,0 +1,62 @@
+<html><head>
+
+</head>
+<body style="background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+{%extends 'head.html'%}
+
+
+{%block contents%}
+  <div class="album py-5">
+    <div class="container">
+      <br>
+      <br>
+      <div class="row">
+        {% for cafe in cafe.all %}
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img width="220" height="350" class="card-img-top" src="{{ cafe.image.url }}">
+              <div class="card-body">
+                <p class="card-text">{{cafe.name}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button class="btn btn-sm btn-outline-secondary" type="button" data-target="#basicExampleModal{{cafe.id}}" data-toggle="modal">자세히</button>
+  
+                      <!-- Modal -->
+                      <div tabindex="-1" class="modal fade" id="basicExampleModal{{cafe.id}}" role="dialog" aria-hidden="true" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">{{cafe.name}}</h5>
+                              <button class="close" aria-label="Close" type="button" data-dismiss="modal">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              ▶ 주 소 : {{cafe.address}}<br><br>
+                              ▶ 분 위 기 : {{cafe.atmosphere}}<br><br>
+                              ▶ 메 뉴 : {{cafe.menu}}<br><br>
+                              ▶ 영업 시간 : {{cafe.opentime}} ~ {{cafe.closetime}} (평일기준)<br><br>
+                              * {{cafe.s}}<br>
+                            </div>
+                            <div class="modal-footer">
+                              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                  <small class="text-muted">{{cafe.address}}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {%endblock%}
+</body>
+</html>
