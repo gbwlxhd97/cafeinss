@@ -8,4 +8,4 @@
 
 링크: https://desolate-forest-54677.herokuapp.com/
 
-## 세세한 기능적 오류가 있어요 ex: page 이동 불가.
+
